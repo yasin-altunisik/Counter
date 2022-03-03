@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { ChakraProvider, Button, ButtonGroup } from "@chakra-ui/react";
+import { AiFillCaretUp, AiFillCaretDown, AiFillDelete} from "react-icons/ai";
+
 
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  const increase = () => {
+    setCounter(counter + 1);
+  };
+
+  const decrease = () => {
+    setCounter(counter - 1);
+  };
+
+  const clean = () => {
+    setCounter(0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider>
+      <div className="App">
+        <text id="header">COUNTER</text>
+        <div id="box">
+          <div id="counter">{counter}</div>
+          <div id="buttons">
+            <ButtonGroup colorScheme='blue' variant="solid" spacing="10" align='center'>
+              <Button leftIcon={<AiFillCaretUp />} onClick={increase} >Increase</Button>
+              <Button leftIcon={<AiFillCaretDown />} onClick={decrease}>Decrease</Button>
+              <Button leftIcon={<AiFillDelete />} onClick={clean}>Clean</Button>
+            </ButtonGroup>
+          </div>
+        </div>
+      </div>
+    </ChakraProvider>
   );
 }
 
