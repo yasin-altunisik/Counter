@@ -22,7 +22,7 @@ function App() {
   return (
     <ChakraProvider>
       <div className="App">
-        <text id="header">COUNTER</text>
+        <text id="header">COUNTER</text> 
         <div id="box">
           <div id="counter">{counter}</div>
           <div id="buttons">
